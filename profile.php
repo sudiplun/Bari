@@ -1,5 +1,4 @@
 <?php
-session_start();
 //error_reporting(0);
 include('includes/config.php');
 if (strlen($_SESSION['user_id'] == 0)) {
@@ -7,12 +6,12 @@ if (strlen($_SESSION['user_id'] == 0)) {
 } else {
     // Add company Code
     if (isset($_POST['update'])) {
-        $adminid = $_SESSION['id'];
+        $adminid = $_SESSION['user_id'];
         //Getting Post Values
         $name = $_POST['name'];
         $emailid = $_POST['emailid'];
         $mobileno = $_POST['mobilenumber'];
-        $query = mysqli_query($con, "update admin set name='$name',MobileNumber='$mobileno',Email='$emailid' where id='$adminid'");
+        $query = mysqli_query($con, "update user_form set Name='$name',MobileNumber='$mobileno',Email='$emailid' where ID='$adminid'");
         if ($query) {
             echo "<script>alert('Admin details updated successfully.');</script>";
             echo "<script>window.location.href='profile.php'</script>";
@@ -70,8 +69,8 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                         <form class="needs-validation" method="post" novalidate>
                                             <?php
                                             //Getting admin name
-                                            $adminid = $_SESSION['id'];
-                                            $query = mysqli_query($con, "select * from admin where id='$adminid'");
+                                            $adminid = $_SESSION['user_id'];
+                                            $query = mysqli_query($con, "select * from user_form where ID='$adminid'");
                                             while ($row = mysqli_fetch_array($query)) {
                                             ?>
 
@@ -92,7 +91,7 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                                 <div class="form-row">
                                                     <div class="col-md-6 mb-10">
                                                         <label for="validationCustom03"> Name</label>
-                                                        <input type="text" class="form-control" id="validationCustom03" value="<?php echo $row['name']; ?>" name="name" required>
+                                                        <input type="text" class="form-control" id="validationCustom03" value="<?php echo $row['Name']; ?>" name="name" required>
                                                         <div class="invalid-feedback">Please provide a valid name.</div>
                                                     </div>
                                                 </div>

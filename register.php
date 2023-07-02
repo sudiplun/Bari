@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
          if ($insert) {
             move_uploaded_file($image_tmp_name, $image_folder);
             $message[] = 'registered successfully!';
-            header('location: index.php');
+            header('location: login.php');
          } else {
             $message[] = 'registeration failed!';
          }
@@ -65,13 +65,13 @@ if (isset($_POST['submit'])) {
             }
          }
          ?>
-         <input type="text" name="name" placeholder="enter username" class="box" required>
+         <input type="text" name="name" placeholder="Enter Your Name" class="box" required>
          <input type="email" name="email" placeholder="enter email" class="box" required>
          <input type="password" name="password" placeholder="enter password" class="box" required>
          <input type="password" name="cpassword" placeholder="confirm password" class="box" required>
          <input type="file" name="image" class="box" accept="image/jpg, image/jpeg, image/png">
          <input type="submit" name="submit" value="register now" class="btn">
-         <p>already have an account? <a href="index.php">login now</a></p>
+         <p>already have an account? <a href="login.php">login now</a></p>
       </form>
 
    </div>
