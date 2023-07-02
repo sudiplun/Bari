@@ -10,10 +10,10 @@ if (strlen($_SESSION['user_id'] == 0)) {
         $adminid = $_SESSION['user_id'];
         $cpassword = ($_POST['currentpassword']);
         $newpassword = ($_POST['newpassword']);
-        $query = mysqli_query($con, "select ID from admin where ID='$adminid' and   Password='$cpassword'");
+        $query = mysqli_query($con, "select ID from user_form where ID='$adminid' and   Password='$cpassword'");
         $row = mysqli_fetch_array($query);
         if ($row > 0) {
-            $ret = mysqli_query($con, "update admin set Password='$newpassword' where ID='$adminid'");
+            $ret = mysqli_query($con, "update user_form set Password='$newpassword' where ID='$adminid'");
             echo "<script>alert('Password changed successfully.');</script>";
             echo "<script>window.location.href='change-password.php'</script>";
         } else {
