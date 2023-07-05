@@ -22,7 +22,7 @@ if (strlen($_SESSION['user_id'] == 0)) {
             echo "<script>window.location.href='add-product.php'</script>";
         }
     }
-?>
+    ?>
 
     <!DOCTYPE html>
     <html lang="en">
@@ -44,8 +44,8 @@ if (strlen($_SESSION['user_id'] == 0)) {
 
             <!-- Top Navbar -->
             <?php include_once('includes/navbar.php');
-            include_once('includes/sidebar.php');
-            ?>
+    include_once('includes/sidebar.php');
+    ?>
             <div id="hk_nav_backdrop" class="hk-nav-backdrop"></div>
             <!-- /Vertical Nav -->
 
@@ -83,8 +83,8 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                                     <select class="form-control custom-select" name="category" required>
                                                         <option value="">Select category</option>
                                                         <?php
-                                                        $ret = mysqli_query($con, "select CategoryName from category");
-                                                        while ($row = mysqli_fetch_array($ret)) { ?>
+                                                $ret = mysqli_query($con, "select CategoryName from category");
+    while ($row = mysqli_fetch_array($ret)) { ?>
                                                             <option value="<?php echo $row['CategoryName']; ?>"><?php echo $row['CategoryName']; ?></option>
                                                         <?php } ?>
                                                     </select>
@@ -98,8 +98,8 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                                     <select class="form-control custom-select" name="company" required>
                                                         <option value="">Select Company</option>
                                                         <?php
-                                                        $ret = mysqli_query($con, "select CompanyName from company");
-                                                        while ($row = mysqli_fetch_array($ret)) { ?>
+    $ret = mysqli_query($con, "select CompanyName from company");
+    while ($row = mysqli_fetch_array($ret)) { ?>
                                                             <option value="<?php echo $row['CompanyName']; ?>"><?php echo $row['CompanyName']; ?></option>
                                                         <?php } ?>
                                                     </select>
