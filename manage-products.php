@@ -69,6 +69,7 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                                         <th>Company</th>
                                                         <th>Product</th>
                                                         <th>Pricing</th>
+                                                        <th>Total Quantity</th>
                                                         <th>Posting Date</th>
                                                         <th>Action</th>
 
@@ -87,6 +88,7 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                                             <td><?php echo $row['CompanyName']; ?></td>
                                                             <td><?php echo $row['ProductName']; ?></td>
                                                             <td><?php echo $row['ProductPrice']; ?></td>
+                                                            <td><?php echo $row['TotalQuantity']; ?></td>
                                                             <td><?php echo $row['PostingDate']; ?></td>
                                                             <td>
                                                                 <a href="edit-product.php?pid=<?php echo base64_encode($row['id'] . $rno); ?>" class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="icon-pencil"></i></a>

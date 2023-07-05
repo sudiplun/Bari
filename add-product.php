@@ -12,7 +12,8 @@ if (strlen($_SESSION['user_id'] == 0)) {
         $company = $_POST['company'];
         $pname = $_POST['productname'];
         $pprice = $_POST['productprice'];
-        $query = mysqli_query($con, "insert into products(CategoryName,CompanyName,ProductName,ProductPrice) values('$catname','$company','$pname','$pprice')");
+        $tquantity = $_POST['quantity'];
+        $query = mysqli_query($con, "insert into products(CategoryName,CompanyName,ProductName,ProductPrice,TotalQuantity) values('$catname','$company','$pname','$pprice','$tquantity')");
         if ($query) {
             echo "<script>alert('Product added successfully.');</script>";
             echo "<script>window.location.href='add-product.php'</script>";
@@ -21,8 +22,8 @@ if (strlen($_SESSION['user_id'] == 0)) {
             echo "<script>window.location.href='add-product.php'</script>";
         }
     }
-
 ?>
+
     <!DOCTYPE html>
     <html lang="en">
 
@@ -45,13 +46,8 @@ if (strlen($_SESSION['user_id'] == 0)) {
             <?php include_once('includes/navbar.php');
             include_once('includes/sidebar.php');
             ?>
-
-
-
             <div id="hk_nav_backdrop" class="hk-nav-backdrop"></div>
             <!-- /Vertical Nav -->
-
-
 
             <!-- Main Content -->
             <div class="hk-pg-wrapper">
@@ -126,6 +122,13 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                                 </div>
                                             </div>
 
+                                            <div class="form-row">
+                                                <div class="col-md-6 mb-10">
+                                                    <label for="validationCustom03">Total Quantity</label>
+                                                    <input type="text" class="form-control" id="validationCustom03" placeholder="Total Quantity" name="quantity" required>
+                                                    <div class="invalid-feedback">Please provide a valid Total Quantity.</div>
+                                                </div>
+                                            </div>
                                             <button class="btn btn-primary" type="submit" name="submit">Submit</button>
                                         </form>
                                     </div>

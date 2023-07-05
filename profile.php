@@ -99,7 +99,7 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                                 <div class="form-row">
                                                     <div class="col-md-6 mb-10">
                                                         <label for="validationCustom03"> Username</label>
-                                                        <input type="text" class="form-control" id="validationCustom03" value="<?php echo $row['UserName']; ?>" name="username" readonly>
+                                                        <input type="text" class="form-control" id="validationCustom03" value="<?php echo $row['UserName']; ?>" name="username" required>
                                                     </div>
                                                 </div>
 

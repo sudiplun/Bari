@@ -13,11 +13,11 @@ if (strlen($_SESSION['user_id'] == 0)) {
         $company = $_POST['company'];
         $pname = $_POST['productname'];
         $pprice = $_POST['productprice'];
-        $query = mysqli_query($con, "update products set CategoryName='$catname',CompanyName='$company',ProductName='$pname',ProductPrice='$pprice' where id='$pid'");
+        $Tquantity = $_POST['totalquantity'];
+        $query = mysqli_query($con, "update products set CategoryName='$catname',CompanyName='$company',ProductName='$pname',ProductPrice='$pprice',TotalQuantity='$Tquantity' where id='$pid'");
         echo "<script>alert('Product updated successfully.');</script>";
         echo "<script>window.location.href='manage-products.php'</script>";
     }
-
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -120,6 +120,13 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                                         <label for="validationCustom03">Product Price</label>
                                                         <input type="text" class="form-control" id="validationCustom03" value="<?php echo $result['ProductPrice']; ?>" name="productprice" required>
                                                         <div class="invalid-feedback">Please provide a valid product price.</div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="col-md-6 mb-10">
+                                                        <label for="validationCustom03">Total Quantity</label>
+                                                        <input type="text" class="form-control" id="validationCustom03" value="<?php echo $result['TotalQuantity']; ?>" name="totalquantity" required>
+                                                        <div class="invalid-feedback">Please provide a valid Quantity.</div>
                                                     </div>
                                                 </div>
                                             <?php } ?>
