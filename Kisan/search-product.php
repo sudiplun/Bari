@@ -8,7 +8,6 @@ if (strlen($_SESSION['user_id'] == 0)) {
     //code for Cart
     if (!empty($_GET["action"])) {
         switch ($_GET["action"]) {
-
                 //code for adding product in cart
             case "add":
                 if (!empty($_POST["quantity"])) {
@@ -302,18 +301,9 @@ if (strlen($_SESSION['user_id'] == 0)) {
                     </div>
                 </div>
                 </section>
-
-
-
-
-
-
-
-
             </div>
         </div>
         </div>
-
 
         <!-- Footer -->
         <?php include_once('includes/footer.php'); ?>

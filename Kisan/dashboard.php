@@ -82,8 +82,6 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                         </div>
                                     </div>
                                 </div>
-
-
                                 <?php
                                 $ret = mysqli_query($con, "select id from company");
                                 $listedcomp = mysqli_num_rows($ret);
@@ -102,6 +100,28 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                             <div class="text-center">
                                                 <span class="d-block display-4 text-dark mb-5"><span class="counter-anim"><?php echo $listedcomp; ?></span></span>
                                                 <small class="d-block">Listed Companies</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <?php
+                                $query = mysqli_query($con, "SELECT id FROM orders");
+                                $listedInvoices = mysqli_num_rows($query);
+                                ?>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="card card-sm">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between mb-5">
+                                                <div>
+                                                    <span class="d-block font-15 text-dark font-weight-500">Invoices</span>
+                                                </div>
+                                                <div>
+                                                </div>
+                                            </div>
+                                            <div class="text-center">
+                                                <span class="d-block display-4 text-dark mb-5"><?php echo $listedInvoices; ?></span>
+                                                <small class="d-block">Total Invoices till date</small>
                                             </div>
                                         </div>
                                     </div>
@@ -128,6 +148,7 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                         </div>
                                     </div>
                                 </div>
+
 
                                 <?php
                                 $qury = mysqli_query($con, "select sum(orders.Quantity*products.ProductPrice) as tt  from orders join products on products.id=orders.ProductId where date(orders.InvoiceGenDate)>=(DATE(NOW()) - INTERVAL 7 DAY)");
