@@ -70,7 +70,13 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                     <div class="row">
                                         <div class="col-md-7 mb-20">
                                             <h3 class="mb-35 font-weight-600"> Bari </h3>
-                                            <h6 class="mb-5">Dairy Farm Shop Management System</h6>
+                                            <?php
+                                            // Getting Farm name 
+                                            $adminid = $_SESSION['user_id'];
+                                            $query = mysqli_query($con, "SELECT Name FROM user_form WHERE id='$adminid'");
+                                            $row = mysqli_fetch_array($query);
+                                            ?>
+                                            <h6 class="mb-5"><?php echo $row['Name']; ?></h6>
 
                                         </div>
 
@@ -144,7 +150,7 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                 </div>
                             </div>
                             </section>
-
+                            <button onclick="window.print()">Print this page</button>
                         </div>
                     </div>
                     <!-- /Row -->

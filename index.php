@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html data-bs-theme="dark">
 
 <head>
     <meta charset="utf-8">
@@ -12,7 +12,7 @@
     <?php
     include_once('navbar.php');
     ?>
-    <h1>Book your Products here!</h1>
+    <h1>Available Products here!</h1>
     <?php
     include_once('products.php');
     ?>

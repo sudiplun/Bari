@@ -14,7 +14,7 @@ if (strlen($_SESSION['user_id'] == 0)) {
                     $pid = $_GET["pid"];
                     $result = mysqli_query($con, "SELECT * FROM products WHERE id='$pid'");
                     while ($productByCode = mysqli_fetch_array($result)) {
-                        $itemArray = array($productByCode["id"] => array('catname' => $productByCode["CategoryName"], 'compname' => $productByCode["CompanyName"], 'quantity' => $_POST["quantity"], 'pname' => $productByCode["ProductName"], 'price' => $productByCode["ProductPrice"], 'code' => $productByCode["id"]));
+                        $itemArray = array($productByCode["id"] => array('catname' => $productByCode["CategoryName"], 'quantity' => $_POST["quantity"], 'pname' => $productByCode["ProductName"], 'price' => $productByCode["ProductPrice"], 'code' => $productByCode["id"]));
                         if (!empty($_SESSION["cart_item"])) {
                             if (in_array($productByCode["id"], array_keys($_SESSION["cart_item"]))) {
                                 foreach ($_SESSION["cart_item"] as $k => $v) {
@@ -157,7 +157,6 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                                         <tr>
                                                             <th>#</th>
                                                             <th>Category</th>
-                                                            <th>Company</th>
                                                             <th>Product</th>
                                                             <th>Pricing</th>
                                                             <th>Quantity</th>
@@ -176,7 +175,6 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                                                 <tr>
                                                                     <td><?php echo $cnt; ?></td>
                                                                     <td><?php echo $row['CategoryName']; ?></td>
-                                                                    <td><?php echo $row['CompanyName']; ?></td>
                                                                     <td><?php echo $row['ProductName']; ?></td>
                                                                     <td><?php echo $row['ProductPrice']; ?></td>
                                                                     <td><input type="text" class="product-quantity" name="quantity" value="1" size="2" /></td>
@@ -220,7 +218,6 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                                             <tr>
                                                                 <th>Product Name</th>
                                                                 <th>Category</th>
-                                                                <th>Company</th>
                                                                 <th width="5%">Quantity</th>
                                                                 <th width="10%">Unit Price</th>
                                                                 <th width="10%">Price</th>
@@ -237,7 +234,6 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                                                 <tr>
                                                                     <td><?php echo $item["pname"]; ?></td>
                                                                     <td><?php echo $item["catname"]; ?></td>
-                                                                    <td><?php echo $item["compname"]; ?></td>
                                                                     <td><?php echo $item["quantity"]; ?></td>
                                                                     <td><?php echo $item["price"]; ?></td>
                                                                     <td><?php echo number_format($item_price, 2); ?></td>

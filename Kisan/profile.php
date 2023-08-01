@@ -9,9 +9,10 @@ if (strlen($_SESSION['user_id'] == 0)) {
         $adminid = $_SESSION['user_id'];
         //Getting Post Values
         $name = $_POST['name'];
+        $username = $_POST['username'];
         $emailid = $_POST['emailid'];
         $mobileno = $_POST['mobilenumber'];
-        $query = mysqli_query($con, "update user_form set Name='$name',MobileNumber='$mobileno',Email='$emailid' where ID='$adminid'");
+        $query = mysqli_query($con, "update user_form set Name='$name',UserName='$username',MobileNumber='$mobileno',Email='$emailid' where ID='$adminid'");
         if ($query) {
             echo "<script>alert('Admin details updated successfully.');</script>";
             echo "<script>window.location.href='profile.php'</script>";

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+<nav class="navbar navbar-expand-lg ">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Bari</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,8 +20,6 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="Kisan/login.php">Kisan</a></li>
-                        <li><a class="dropdown-item" href="#">Another</a></li>
-                        <li><a class="dropdown-item" href="#">Something</a></li>
                     </ul>
                 </li>
             </ul>

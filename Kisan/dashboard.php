@@ -1,7 +1,6 @@
 <?php
-
 //error_reporting(0);
-include('includes/config.php');
+require_once('includes/config.php');
 if (strlen($_SESSION['user_id'] == 0)) {
     header('location:logout.php');
 } else { ?>
@@ -20,8 +19,6 @@ if (strlen($_SESSION['user_id'] == 0)) {
     </head>
 
     <body>
-
-
         <!-- HK Wrapper -->
         <div class="hk-wrapper hk-vertical-nav">
 
@@ -32,13 +29,19 @@ if (strlen($_SESSION['user_id'] == 0)) {
             <!-- /Vertical Nav -->
             <!-- Main Content -->
             <div class="hk-pg-wrapper">
+                <?php
+                // Getting Farm name 
+                $adminid = $_SESSION['user_id'];
+                $query = mysqli_query($con, "SELECT Name FROM user_form WHERE id='$adminid'");
+                $row = mysqli_fetch_array($query);
+                ?>
+                <h2>Welcome to <?php echo $row['Name']; ?></h2>
                 <!-- Container -->
                 <div class="container-fluid mt-xl-50 mt-sm-30 mt-15">
                     <!-- Row -->
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="hk-row">
-
                                 <?php
                                 $sql = mysqli_query($con, "select id from products");
                                 $listedproduct = mysqli_num_rows($sql);
@@ -78,28 +81,6 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                             <div class="text-center">
                                                 <span class="d-block display-4 text-dark mb-5"><?php echo $listedcat; ?></span>
                                                 <small class="d-block">Listed Categories</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <?php
-                                $ret = mysqli_query($con, "select id from company");
-                                $listedcomp = mysqli_num_rows($ret);
-                                ?>
-                                <div class="col-lg-3 col-md-6">
-                                    <div class="card card-sm">
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-between mb-5">
-                                                <div>
-                                                    <span class="d-block font-15 text-dark font-weight-500">Companies</span>
-                                                </div>
-                                                <div>
-                                                </div>
-                                            </div>
-
-                                            <div class="text-center">
-                                                <span class="d-block display-4 text-dark mb-5"><span class="counter-anim"><?php echo $listedcomp; ?></span></span>
-                                                <small class="d-block">Listed Companies</small>
                                             </div>
                                         </div>
                                     </div>
@@ -215,7 +196,6 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                         </div>
                                     </div>
                                 </div>
-
 
                             </div>
 

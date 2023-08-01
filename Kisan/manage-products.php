@@ -66,7 +66,7 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                                     <tr>
                                                         <th>#</th>
                                                         <th>Category</th>
-                                                        <th>Company</th>
+                                                        <!-- <th>Company</th> -->
                                                         <th>Product</th>
                                                         <th>Pricing</th>
                                                         <th>Total Quantity</th>
@@ -85,7 +85,7 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                                         <tr>
                                                             <td><?php echo $cnt; ?></td>
                                                             <td><?php echo $row['CategoryName']; ?></td>
-                                                            <td><?php echo $row['CompanyName']; ?></td>
+                                                            <!-- <td><?php echo $row['CompanyName']; ?></td> -->
                                                             <td><?php echo $row['ProductName']; ?></td>
                                                             <td><?php echo $row['ProductPrice']; ?></td>
                                                             <td><?php echo $row['TotalQuantity']; ?></td>
@@ -108,10 +108,8 @@ if (strlen($_SESSION['user_id'] == 0)) {
                         </div>
                     </div>
                     <!-- /Row -->
-
                 </div>
                 <!-- /Container -->
-
                 <!-- Footer -->
                 <?php include_once('includes/footer.php'); ?>
                 <!-- /Footer -->
