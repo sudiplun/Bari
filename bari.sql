@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 02, 2023 at 06:35 PM
+-- Generation Time: Aug 02, 2023 at 07:11 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -80,16 +80,18 @@ CREATE TABLE `products` (
   `LeftQuantity` decimal(10,2) DEFAULT NULL,
   `TotalQuantity` decimal(10,2) DEFAULT NULL,
   `PostingDate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `UpdationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
+  `UpdationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
+  `CategoryCode` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `CategoryName`, `ProductName`, `ProductPrice`, `LeftQuantity`, `TotalQuantity`, `PostingDate`, `UpdationDate`) VALUES
-(11, 'Vegetables', 'Tomatoes', 50, NULL, 1000.00, '2023-07-13 12:31:12', NULL),
-(12, 'Chicken', 'Boilers ', 450, NULL, 800.00, '2023-07-13 12:32:05', NULL);
+INSERT INTO `products` (`id`, `CategoryName`, `ProductName`, `ProductPrice`, `LeftQuantity`, `TotalQuantity`, `PostingDate`, `UpdationDate`, `CategoryCode`) VALUES
+(11, 'Vegetables', 'Tomatoes', 500, NULL, 10.00, '2023-08-02 16:45:10', '2023-08-02 16:45:10', NULL),
+(12, 'Chicken', 'Boilers ', 450, NULL, 800.00, '2023-07-13 12:32:05', NULL, NULL),
+(15, 'Meat', 'buff', 222, NULL, 2.00, '2023-08-02 17:08:43', NULL, 'C102');
 
 -- --------------------------------------------------------
 
@@ -115,7 +117,7 @@ CREATE TABLE `user_form` (
 
 INSERT INTO `user_form` (`ID`, `Name`, `UserName`, `MobileNumber`, `Email`, `Password`, `Image`, `AdminRegdate`, `UpdationDate`) VALUES
 (4, 'Lun Farm Pvt. Ltd', 'sudiplun', 9746271464, 'sudiplun@gmail.com', 'wahtever', '_e.png', '2023-07-01 11:50:13', '2023-08-02 15:55:37'),
-(6, 'Lun Farm Pvt. Ltd', 'cool', 98611835712, 'pop@gmail.com', 'pop321', '', '2023-08-01 14:29:25', '2023-08-02 16:30:05');
+(6, 'Lun Farm Pvt. Ltd', 'cool', 98611835712, 'pop@xyz.yz', 'pop321', '', '2023-08-01 14:29:25', '2023-08-02 16:38:32');
 
 --
 -- Indexes for dumped tables
@@ -165,7 +167,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `user_form`

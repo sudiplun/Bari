@@ -1,5 +1,4 @@
 <?php
-session_start();
 //error_reporting(0);
 include('includes/config.php');
 if (strlen($_SESSION['user_id'] == 0)) {
@@ -10,11 +9,10 @@ if (strlen($_SESSION['user_id'] == 0)) {
         $pid = substr(base64_decode($_GET['pid']), 0, -5);
         //Getting Post Values
         $catname = $_POST['category'];
-        $company = $_POST['company'];
         $pname = $_POST['productname'];
         $pprice = $_POST['productprice'];
         $Tquantity = $_POST['totalquantity'];
-        $query = mysqli_query($con, "update products set CategoryName='$catname',CompanyName='$company',ProductName='$pname',ProductPrice='$pprice',TotalQuantity='$Tquantity' where id='$pid'");
+        $query = mysqli_query($con, "update products set CategoryName='$catname',ProductName='$pname',ProductPrice='$pprice',TotalQuantity='$Tquantity' where id='$pid'");
         echo "<script>alert('Product updated successfully.');</script>";
         echo "<script>window.location.href='manage-products.php'</script>";
     }
@@ -93,20 +91,7 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                                     </div>
                                                 </div>
 
-                                                <div class="form-row">
-                                                    <div class="col-md-6 mb-10">
-                                                        <label for="validationCustom03">Company</label>
-                                                        <select class="form-control custom-select" name="company" required>
-                                                            <option value="<?php echo $result['CompanyName']; ?>"><?php echo $result['CompanyName']; ?></option>
-                                                            <?php
-                                                            $ret = mysqli_query($con, "select CompanyName from company");
-                                                            while ($rw = mysqli_fetch_array($ret)) { ?>
-                                                                <option value="<?php echo $rw['CompanyName']; ?>"><?php echo $rw['CompanyName']; ?></option>
-                                                            <?php } ?>
-                                                        </select>
-                                                        <div class="invalid-feedback">Please select a company.</div>
-                                                    </div>
-                                                </div>
+
                                                 <div class="form-row">
                                                     <div class="col-md-6 mb-10">
                                                         <label for="validationCustom03">Product Name</label>

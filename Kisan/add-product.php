@@ -1,5 +1,7 @@
 <?php
-session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 //error_reporting(0);
 include('includes/config.php');
 if (strlen($_SESSION['user_id'] == 0)) {
