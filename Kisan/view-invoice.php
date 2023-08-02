@@ -30,7 +30,6 @@ if (strlen($_SESSION['user_id'] == 0)) {
 
     <body>
 
-
         <!-- HK Wrapper -->
         <div class="hk-wrapper hk-vertical-nav">
             <!-- Top Navbar -->
@@ -63,8 +62,6 @@ if (strlen($_SESSION['user_id'] == 0)) {
                     <!-- Row -->
                     <div class="row">
                         <div class="col-xl-12">
-
-
                             <section class="hk-sec-wrapper hk-invoice-wrap pa-35">
                                 <div class="invoice-from-wrap">
                                     <div class="row">
@@ -111,7 +108,6 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                                     <th>#</th>
                                                     <th>Product Name</th>
                                                     <th>Category</th>
-                                                    <th>Company</th>
                                                     <th width="5%">Quantity</th>
                                                     <th width="10%">Unit Price</th>
                                                     <th width="10%">Price</th>
@@ -121,7 +117,7 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                             <tbody>
                                                 <?php
                                                 //Product Details
-                                                $query = mysqli_query($con, "select products.CategoryName,products.ProductName,products.CompanyName,products.ProductPrice,orders.Quantity  from orders join products on products.id=orders.ProductId where orders.InvoiceNumber='$inid'");
+                                                $query = mysqli_query($con, "select products.CategoryName,products.ProductName,products.ProductPrice,orders.Quantity  from orders join products on products.id=orders.ProductId where orders.InvoiceNumber='$inid'");
                                                 $cnt = 1;
                                                 while ($row = mysqli_fetch_array($query)) {
                                                 ?>
@@ -129,7 +125,6 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                                         <td><?php echo $cnt; ?></td>
                                                         <td><?php echo $row['ProductName']; ?></td>
                                                         <td><?php echo $row['CategoryName']; ?></td>
-                                                        <td><?php echo $row['CompanyName']; ?></td>
                                                         <td><?php echo $qty = $row['Quantity']; ?></td>
                                                         <td><?php echo $ppu = $row['ProductPrice']; ?></td>
                                                         <td><?php echo $subtotal = number_format($ppu * $qty, 2); ?></td>
@@ -150,16 +145,16 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                 </div>
                             </div>
                             </section>
-                            <button onclick="window.print()">Print this page</button>
                         </div>
                     </div>
                     <!-- /Row -->
 
+                    <!-- Add the "Print this page" button -->
+                    <button class="btn btn-primary" onclick="window.print()">Print this page</button>
+
                 </div>
                 <!-- /Container -->
 
-                <!-- Footer -->
-                <?php include_once('includes/footer.php'); ?>
                 <!-- /Footer -->
             </div>
             <!-- /Main Content -->

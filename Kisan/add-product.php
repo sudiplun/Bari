@@ -9,11 +9,11 @@ if (strlen($_SESSION['user_id'] == 0)) {
     if (isset($_POST['submit'])) {
         //Getting Post Values
         $catname = $_POST['category'];
-        $company = $_POST['company'];
+        $catcode = $_POST['categorycode'];
         $pname = $_POST['productname'];
         $pprice = $_POST['productprice'];
         $tquantity = $_POST['quantity'];
-        $query = mysqli_query($con, "insert into products(CategoryName,CompanyName,ProductName,ProductPrice,TotalQuantity) values('$catname','$company','$pname','$pprice','$tquantity')");
+        $query = mysqli_query($con, "insert into products(CategoryName,CategoryCode,ProductName,ProductPrice,TotalQuantity) values('$catname','$catcode','$pname','$pprice','$tquantity')");
         if ($query) {
             echo "<script>alert('Product added successfully.');</script>";
             echo "<script>window.location.href='add-product.php'</script>";
@@ -22,7 +22,7 @@ if (strlen($_SESSION['user_id'] == 0)) {
             echo "<script>window.location.href='add-product.php'</script>";
         }
     }
-    ?>
+?>
 
     <!DOCTYPE html>
     <html lang="en">
@@ -44,8 +44,8 @@ if (strlen($_SESSION['user_id'] == 0)) {
 
             <!-- Top Navbar -->
             <?php include_once('includes/navbar.php');
-    include_once('includes/sidebar.php');
-    ?>
+            include_once('includes/sidebar.php');
+            ?>
             <div id="hk_nav_backdrop" class="hk-nav-backdrop"></div>
             <!-- /Vertical Nav -->
 
@@ -83,8 +83,8 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                                     <select class="form-control custom-select" name="category" required>
                                                         <option value="">Select category</option>
                                                         <?php
-                                                $ret = mysqli_query($con, "select CategoryName from category");
-    while ($row = mysqli_fetch_array($ret)) { ?>
+                                                        $ret = mysqli_query($con, "select CategoryName from category");
+                                                        while ($row = mysqli_fetch_array($ret)) { ?>
                                                             <option value="<?php echo $row['CategoryName']; ?>"><?php echo $row['CategoryName']; ?></option>
                                                         <?php } ?>
                                                     </select>
@@ -94,16 +94,16 @@ if (strlen($_SESSION['user_id'] == 0)) {
 
                                             <div class="form-row">
                                                 <div class="col-md-6 mb-10">
-                                                    <label for="validationCustom03">Company</label>
-                                                    <select class="form-control custom-select" name="company" required>
-                                                        <option value="">Select Company</option>
+                                                    <label for="validationCustom03">CategoryCode</label>
+                                                    <select class="form-control custom-select" name="categorycode" required>
+                                                        <option value="">Select category code</option>
                                                         <?php
-    $ret = mysqli_query($con, "select CompanyName from company");
-    while ($row = mysqli_fetch_array($ret)) { ?>
-                                                            <option value="<?php echo $row['CompanyName']; ?>"><?php echo $row['CompanyName']; ?></option>
+                                                        $ret = mysqli_query($con, "select CategoryCode from category");
+                                                        while ($row = mysqli_fetch_array($ret)) { ?>
+                                                            <option value="<?php echo $row['CategoryCode']; ?>"><?php echo $row['CategoryCode']; ?></option>
                                                         <?php } ?>
                                                     </select>
-                                                    <div class="invalid-feedback">Please select a company.</div>
+                                                    <div class="invalid-feedback">Please select a category code.</div>
                                                 </div>
                                             </div>
                                             <div class="form-row">
