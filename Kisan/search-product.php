@@ -1,5 +1,4 @@
 <?php
-session_start();
 //error_reporting(0);
 include('includes/config.php');
 if (strlen($_SESSION['user_id'] == 0)) {
@@ -146,13 +145,13 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                 </div>
                             </section>
                             <!--code for search result -->
+
                             <?php if (isset($_POST['search'])) { ?>
                                 <section class="hk-sec-wrapper">
-
                                     <div class="row">
                                         <div class="col-sm">
                                             <div class="table-wrap">
-                                                <table id="datable_1" class="table table-hover w-100 display pb-30">
+                                                <table id="datable_1" class="table table-hover w-100 display pb-30" border="1">
                                                     <thead>
                                                         <tr>
                                                             <th>#</th>
@@ -161,7 +160,6 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                                             <th>Pricing</th>
                                                             <th>Quantity</th>
                                                             <th>Action</th>
-
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -177,7 +175,9 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                                                     <td><?php echo $row['CategoryName']; ?></td>
                                                                     <td><?php echo $row['ProductName']; ?></td>
                                                                     <td><?php echo $row['ProductPrice']; ?></td>
-                                                                    <td><input type="text" class="product-quantity" name="quantity" value="1" size="2" /></td>
+                                                                    <td>
+                                                                        <input type="number" class="product-quantity" name="quantity" value="1" size="2" min="1" required>
+                                                                    </td>
                                                                     <td>
                                                                         <input type="submit" value="Add to Cart" class="btnAddAction" />
                                                                     </td>
@@ -186,7 +186,6 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                                         <?php
                                                             $cnt++;
                                                         } ?>
-
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -194,13 +193,11 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                     </div>
                                 </section>
                             <?php } ?>
-
-
                             <form class="needs-validation" method="post" novalidate>
 
                                 <!--- Shopping Cart ---->
                                 <section class="hk-sec-wrapper">
-
+                                    <!-- Code for Search Form -->
                                     <div class="row">
                                         <div class="col-sm">
                                             <div class="table-wrap">
