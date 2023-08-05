@@ -27,8 +27,8 @@ $products = mysqli_fetch_all($query, MYSQLI_ASSOC);
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $product['ProductName']; ?></h5>
-                            <p class="card-text">Price: $<?php echo $product['ProductPrice']; ?></p>
-                            <p class="card-text">Left Quantity: <?php echo $product['LeftQuantity']; ?></p>
+                            <p class="card-text">Price: Rs.<?php echo $product['ProductPrice']; ?></p>
+                            <p class="card-text">Available Quantity: <?php echo $product['LeftQuantity']; ?></p>
                             <button class="btn btn-primary" data-toggle="modal" data-target="#orderModal<?php echo $product['id']; ?>">Order</button>
                         </div>
                     </div>

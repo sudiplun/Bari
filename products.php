@@ -35,9 +35,9 @@ $names = mysqli_fetch_all($queryNames, MYSQLI_ASSOC);
                             <h4 class="card-title"><b><?php echo $product['ProductName']; ?></b></h4>
                             <!-- <h6 class="card-subtitle mb-2 text-muted"><?php echo $names[$key]['Name']; ?></h6> -->
                             <p class="card-text">Category: <?php echo $product['CategoryName']; ?></p>
-                            <p class="card-text">Price: $<?php echo $product['ProductPrice']; ?></p>
+                            <p class="card-text">Price: Rs.<?php echo $product['ProductPrice']; ?></p>
                             <p class="card-text">Quantity: <?php echo $product['TotalQuantity']; ?></p>
-                            <p class="card-text">Left Quantity: <?php echo $product['LeftQuantity']; ?></p>
+                            <p class="card-text">Available Quantity: <?php echo $product['LeftQuantity']; ?></p>
                         </div>
                     </div>
                 </div>
