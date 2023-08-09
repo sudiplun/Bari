@@ -72,7 +72,6 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                                         <th>Total Quantity</th>
                                                         <th>Posting Date</th>
                                                         <th>Action</th>
-
                                                     </tr>
                                                 </thead>
                                                 <tbody>

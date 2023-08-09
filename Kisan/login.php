@@ -61,8 +61,6 @@ if (isset($_POST['submit'])) {
         <div class="navbar-brand">BARI</div>
         <ul class="navbar-items">
             <li><a href="../index.php">home</a></li>
-            <li><a href="#">Item 2</a></li>
-            <li><a href="#">Item 3</a></li>
             <li><a href="logout.php">logout</a></li>
         </ul>
     </nav>

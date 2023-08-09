@@ -12,8 +12,8 @@ if (strlen($_SESSION['user_id'] == 0)) {
         $pname = $_POST['productname'];
         $pprice = $_POST['productprice'];
         $Tquantity = $_POST['totalquantity'];
-        // $Lquantity = $_POST['leftquantity'];
-        $query = mysqli_query($con, "update products set CategoryName='$catname',ProductName='$pname',ProductPrice='$pprice',TotalQuantity='$Tquantity' where id='$pid'");
+        $Lquantity = $_POST['leftquantity'];
+        $query = mysqli_query($con, "update products set CategoryName='$catname',ProductName='$pname',ProductPrice='$pprice',LeftQuantity='$Lquantity',TotalQuantity='$Tquantity' where id='$pid'");
         echo "<script>alert('Product updated successfully.');</script>";
         echo "<script>window.location.href='manage-products.php'</script>";
     }
@@ -115,13 +115,13 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                                         <div class="invalid-feedback">Please provide a valid Quantity.</div>
                                                     </div>
                                                 </div>
-                                                <!-- <div class="form-row">
+                                                <div class="form-row">
                                                     <div class="col-md-6 mb-10">
                                                         <label for="validationCustom03">Left Quantity</label>
                                                         <input type="text" class="form-control" id="validationCustom03" value="<?php echo $result['LeftQuantity']; ?>" name="leftquantity" optional>
                                                         <div class="invalid-feedback">Please provide a valid Quantity.</div>
                                                     </div>
-                                                </div> -->
+                                                </div>
                                             <?php } ?>
                                             <button class="btn btn-primary" type="submit" name="update">Update</button>
                                         </form>

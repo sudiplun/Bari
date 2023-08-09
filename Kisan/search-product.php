@@ -84,23 +84,14 @@ if (strlen($_SESSION['user_id'] == 0)) {
     </head>
 
     <body>
-
-
         <!-- HK Wrapper -->
         <div class="hk-wrapper hk-vertical-nav">
-
             <!-- Top Navbar -->
             <?php include_once('includes/navbar.php');
             include_once('includes/sidebar.php');
             ?>
-
-
-
             <div id="hk_nav_backdrop" class="hk-nav-backdrop"></div>
             <!-- /Vertical Nav -->
-
-
-
             <!-- Main Content -->
             <div class="hk-pg-wrapper">
                 <!-- Breadcrumb -->
@@ -114,7 +105,7 @@ if (strlen($_SESSION['user_id'] == 0)) {
 
                 <!-- Container -->
                 <div class="container">
-                    <!-- Title -->
+                    <!-- Title search product-->
                     <div class="hk-pg-header">
                         <h4 class="hk-pg-title"><span class="pg-title-icon"><span class="feather-icon"><i data-feather="external-link"></i></span></span>Search Product</h4>
                     </div>
@@ -124,8 +115,8 @@ if (strlen($_SESSION['user_id'] == 0)) {
                     <div class="row">
                         <div class="col-xl-12">
 
+                            <!-- product name box  -->
                             <section class="hk-sec-wrapper">
-
                                 <div class="row">
                                     <div class="col-sm">
                                         <form class="needs-validation" method="post" novalidate>
@@ -144,6 +135,8 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                     </div>
                                 </div>
                             </section>
+                            <!-- end search and product name -->
+
                             <!--code for search result -->
 
                             <?php if (isset($_POST['search'])) { ?>
@@ -193,6 +186,7 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                     </div>
                                 </section>
                             <?php } ?>
+                            <!-- end of code for search result -->
                             <form class="needs-validation" method="post" novalidate>
 
                                 <!--- Shopping Cart ---->
@@ -203,7 +197,6 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                             <div class="table-wrap">
                                                 <h4>Shopping Cart</h4>
                                                 <hr />
-
                                                 <a id="btnEmpty" href="search-product.php?action=empty">Empty Cart</a>
                                                 <?php
                                                 if (isset($_SESSION["cart_item"])) {
