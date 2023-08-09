@@ -10,7 +10,7 @@
   top: 5% !important;
   padding: 12px !important;
   overflow: hidden !important;
-  height: 0px !important;
+  height: 40px !important;
 }
 
 .goog-te-combo {
@@ -46,3 +46,15 @@
   display: none !important;
 }
 /* end  */
+/* Dark Mode Styles */
+.dark-mode .navbar {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Light Mode Styles */
+.light-mode .navbar {
+    background-color: #f8f9fa;
+    color: #333;
+}
+
