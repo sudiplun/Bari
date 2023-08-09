@@ -1,32 +1,19 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <title>navbar</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="./css/styles.css">
 </head>
 
-<body">
-    <nav class="navbar navbar-expand-lg ">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.php">
-                <h4>Bari</h4>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-                <ul class="nav nav-pills">
-                    <li class="nav-item">
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img loading="lazy" src="./images/language.png" height="38" width="38" alt="lang" />
-                            <div id="google_translate_element"></div>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="products.php">products</a>
-                    </li>
+<body>
+    <nav class="navbar navbar-dark navbar-expand-md bg-dark py-3" style="height:47px;top:0px;">
+        <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><span class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center me-2 bs-icon"></span><span style="height: 32px;width: 64.7px;">Bari</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-5"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-5">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link " href="index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Kisan/dashboard.php">Products</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Login
@@ -35,9 +22,15 @@
                             <li><a class="dropdown-item" href="Kisan/login.php">Kisan</a></li>
                             <li><a class="dropdown-item" href="Kisan/dashboard.php">dashboard</a></li>
                         </ul>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img loading="lazy" src="./images/language.png" height="38" width="38" alt="lang" />
+                            <div id="google_translate_element"></div>
+                        </a>
+                    </li>
                 </ul>
-                </li>
-                </ul>
+                <!-- <a class="btn btn-primary ms-md-2" role="button" href="#">Login</a> -->
             </div>
         </div>
     </nav>
@@ -50,6 +43,6 @@
         }
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    </body>
+</body>
 
 </html>
