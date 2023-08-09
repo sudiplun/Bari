@@ -4,6 +4,33 @@ include('Kisan/includes/config.php');
 // Fetch products from the database
 $query = mysqli_query($con, "SELECT * FROM products");
 $products = mysqli_fetch_all($query, MYSQLI_ASSOC);
+
+// Define default search and category filter values
+$searchKeyword = '';
+$categoryFilter = 'All';
+
+// Process search and category filter if submitted
+if (isset($_POST['submit'])) {
+    $searchKeyword = $_POST['search'];
+    $categoryFilter = $_POST['category'];
+}
+
+// Build the SQL query based on search and category filter
+$query = "SELECT * FROM products";
+
+if ($categoryFilter != 'All') {
+    $query .= " WHERE CategoryName = '$categoryFilter'";
+    if ($searchKeyword != '') {
+        $query .= " AND ProductName LIKE '%$searchKeyword%'";
+    }
+} else {
+    if ($searchKeyword != '') {
+        $query .= " WHERE ProductName LIKE '%$searchKeyword%'";
+    }
+}
+
+$result = mysqli_query($con, $query);
+$products = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -13,23 +40,45 @@ $products = mysqli_fetch_all($query, MYSQLI_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product List</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
 </head>
 
 <body>
 
     <div class="container">
         <h1 class="my-4">Product List</h1>
-
+        <!-- Search Form -->
+        <form method="post">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <input type="text" class="form-control" name="search" placeholder="Search Product" value="<?php echo $searchKeyword; ?>">
+                </div>
+                <div class="col-md-4">
+                    <select class="form-control" name="category">
+                        <option value="All">All Categories</option>
+                        <?php foreach ($categories as $category) : ?>
+                            <option value="<?php echo $category['CategoryName']; ?>" <?php if ($categoryFilter == $category['CategoryName']) echo 'selected'; ?>><?php echo $category['CategoryName']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-primary" name="submit">Search</button>
+                </div>
+            </div>
+        </form>
+        <!-- end Search Form -->
         <div class="row">
             <?php foreach ($products as $product) : ?>
                 <div class="col-md-4 mb-4">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title"><?php echo $product['ProductName']; ?></h5>
+                            <h5 class="card-title"><b><?php echo $product['ProductName']; ?></b></h5>
+                            <p class="card-text">Category: <?php echo $product['CategoryName']; ?></p>
                             <p class="card-text">Price: Rs.<?php echo $product['ProductPrice']; ?></p>
+                            <p class="card-text">Quantity: <?php echo $product['TotalQuantity']; ?></p>
                             <p class="card-text">Available Quantity: <?php echo $product['LeftQuantity']; ?></p>
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#orderModal<?php echo $product['id']; ?>">Order</button>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#orderModal<?php echo $product['id']; ?>">Order</button>
+                            <!-- <button class="btn btn-primary">Book</button> -->
                         </div>
                     </div>
                 </div>
@@ -40,8 +89,7 @@ $products = mysqli_fetch_all($query, MYSQLI_ASSOC);
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="orderModalLabel">Order <?php echo $product['ProductName']; ?></h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                 </button>
                             </div>
                             <div class="modal-body">
@@ -59,18 +107,26 @@ $products = mysqli_fetch_all($query, MYSQLI_ASSOC);
                                         <label for="quantity">Quantity</label>
                                         <input type="number" class="form-control" id="quantity" name="quantity" required>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Submit Order</button>
+                                    <div class="form-group">
+                                        <label for="paymentMode">Payment Mode</label>
+                                        <select class="form-control" id="paymentMode" name="payment_mode" required>
+                                            <option value="cash">Cash</option>
+                                            <option value="card">Card</option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" style="margin-top: 6px;">Place Order</button>
                                 </form>
                             </div>
+                            <!-- <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Submit Order</button>
+                            </div> -->
                         </div>
                     </div>
                 </div>
                 <!-- /Order Modal -->
             <?php endforeach; ?>
         </div>
-
     </div>
-
 </body>
 
 </html>
