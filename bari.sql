@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 02, 2023 at 07:11 PM
+-- Generation Time: Aug 11, 2023 at 10:24 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -39,8 +39,7 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `CategoryName`, `CategoryCode`, `PostingDate`) VALUES
-(9, 'Vegetables', 'T100', '2023-07-13 12:27:28'),
-(11, 'Meat', 'C102', '2023-07-13 12:30:21');
+(9, 'Vegetables', 'T100', '2023-07-13 12:27:28');
 
 -- --------------------------------------------------------
 
@@ -59,13 +58,6 @@ CREATE TABLE `orders` (
   `InvoiceGenDate` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
---
--- Dumping data for table `orders`
---
-
-INSERT INTO `orders` (`id`, `ProductId`, `Quantity`, `InvoiceNumber`, `CustomerName`, `CustomerContactNo`, `PaymentMode`, `InvoiceGenDate`) VALUES
-(7, 14, 134, 719340562, 'janak', 89374792323, 'card', '2023-08-02 16:32:49');
-
 -- --------------------------------------------------------
 
 --
@@ -77,7 +69,7 @@ CREATE TABLE `products` (
   `CategoryName` varchar(150) DEFAULT NULL,
   `ProductName` varchar(150) DEFAULT NULL,
   `ProductPrice` decimal(10,0) DEFAULT current_timestamp(),
-  `LeftQuantity` decimal(10,2) DEFAULT NULL,
+  `LeftQuantity` decimal(10,2) DEFAULT 0.00,
   `TotalQuantity` decimal(10,2) DEFAULT NULL,
   `PostingDate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `UpdationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
@@ -89,9 +81,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `CategoryName`, `ProductName`, `ProductPrice`, `LeftQuantity`, `TotalQuantity`, `PostingDate`, `UpdationDate`, `CategoryCode`) VALUES
-(11, 'Vegetables', 'Tomatoes', 500, NULL, 10.00, '2023-08-02 16:45:10', '2023-08-02 16:45:10', NULL),
-(12, 'Chicken', 'Boilers ', 450, NULL, 800.00, '2023-07-13 12:32:05', NULL, NULL),
-(15, 'Meat', 'buff', 222, NULL, 2.00, '2023-08-02 17:08:43', NULL, 'C102');
+(11, 'Vegetables', 'Tomatoes', 140, 100.00, 1000.00, '2023-08-11 08:18:59', '2023-08-11 08:18:59', NULL);
 
 -- --------------------------------------------------------
 
@@ -116,8 +106,7 @@ CREATE TABLE `user_form` (
 --
 
 INSERT INTO `user_form` (`ID`, `Name`, `UserName`, `MobileNumber`, `Email`, `Password`, `Image`, `AdminRegdate`, `UpdationDate`) VALUES
-(4, 'Lun Farm Pvt. Ltd', 'sudiplun', 9746271464, 'sudiplun@gmail.com', 'wahtever', '_e.png', '2023-07-01 11:50:13', '2023-08-02 15:55:37'),
-(6, 'Lun Farm Pvt. Ltd', 'cool', 98611835712, 'pop@xyz.yz', 'pop321', '', '2023-08-01 14:29:25', '2023-08-02 16:38:32');
+(4, 'Sudip Farm ', 'sudiplun', 9746271464, 'sudipfarm@bari.com', 'whatever', '_e.png', '2023-06-15 08:21:09', '2023-08-11 08:22:53');
 
 --
 -- Indexes for dumped tables
@@ -161,19 +150,19 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `user_form`
 --
 ALTER TABLE `user_form`
-  MODIFY `ID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
