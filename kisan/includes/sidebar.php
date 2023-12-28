@@ -45,13 +45,18 @@
                          </li>
                      </ul>
                  </li>
-                                 <li class="nav-item">
+                 <li class="nav-item">
                      <a class="nav-link" href="search-product.php">
                          <i class="glyphicon glyphicon-search"></i>
                          <span class="nav-link-text">Search Product</span>
                      </a>
                  </li>
-
+                 <li class="nav-item">
+                     <a class="nav-link" href="pending.php">
+                         <i class="ion ion-ios-list-box"></i>
+                         <span class="nav-link-text">Pending</span>
+                     </a>
+                 </li>
                  <li class="nav-item">
                      <a class="nav-link" href="invoices.php">
                          <i class="ion ion-ios-list-box"></i>

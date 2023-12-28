@@ -64,7 +64,7 @@ if (strlen($_SESSION['user_id'] == 0)) {
         foreach ($value as $pdid => $qty) {
             $query = mysqli_query($con, "insert into orders(ProductId,Quantity,InvoiceNumber,CustomerName,CustomerContactNo,PaymentMode) values('$pdid','$qty','$invoiceno','$cname','$cmobileno','$pmode')");
         }
-        echo '<script>alert("Invoice genrated successfully. Invoice number is "+"' . $invoiceno . '")</script>';
+        echo '<script>alert("Invoice generated successfully. Invoice number is "+"' . $invoiceno . '")</script>';
         unset($_SESSION["cart_item"]);
         $_SESSION['invoice'] = $invoiceno;
         echo "<script>window.location.href='invoice.php'</script>";

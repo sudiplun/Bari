@@ -29,8 +29,6 @@ if (strlen($_SESSION['user_id'] == 0)) {
     </head>
 
     <body>
-
-
         <!-- HK Wrapper -->
         <div class="hk-wrapper hk-vertical-nav">
             <!-- Top Navbar -->
@@ -112,10 +110,8 @@ if (strlen($_SESSION['user_id'] == 0)) {
                         </div>
                     </div>
                     <!-- /Row -->
-
                 </div>
                 <!-- /Container -->
-
                 <!-- Footer -->
                 <?php include_once('includes/footer.php'); ?>
                 <!-- /Footer -->
