@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 22, 2023 at 06:19 AM
+-- Generation Time: Dec 29, 2023 at 04:09 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -39,7 +39,9 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `CategoryName`, `CategoryCode`, `PostingDate`) VALUES
-(9, 'Vegetables', 'T100', '2023-07-13 12:27:28');
+(9, 'Vegetables', 'T100', '2023-07-13 12:27:28'),
+(13, 'Meat', 'M100', '2023-12-25 01:36:19'),
+(14, 'Friuts', 'F100', '2023-12-25 02:31:30');
 
 -- --------------------------------------------------------
 
@@ -55,15 +57,18 @@ CREATE TABLE `orders` (
   `CustomerName` varchar(150) DEFAULT NULL,
   `CustomerContactNo` bigint(12) DEFAULT NULL,
   `PaymentMode` varchar(100) DEFAULT NULL,
-  `InvoiceGenDate` timestamp NULL DEFAULT current_timestamp()
+  `InvoiceGenDate` timestamp NULL DEFAULT current_timestamp(),
+  `ApprovalStatus` enum('Pending','Approved','Rejected') NOT NULL DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `ProductId`, `Quantity`, `InvoiceNumber`, `CustomerName`, `CustomerContactNo`, `PaymentMode`, `InvoiceGenDate`) VALUES
-(16, 24, 3, 952031, 'sd', 32, 'cash', '2023-11-27 07:37:56');
+INSERT INTO `orders` (`id`, `ProductId`, `Quantity`, `InvoiceNumber`, `CustomerName`, `CustomerContactNo`, `PaymentMode`, `InvoiceGenDate`, `ApprovalStatus`) VALUES
+(18, 27, 5, 238111, 'Bikash', 98328289239, 'cash', '2023-12-25 02:35:44', 'Approved'),
+(19, 32, 2000, 822033, 'test123', 97323723772, 'cash', '2023-12-25 03:49:12', 'Rejected'),
+(20, 11, 433, 128724, 'sd', 45678978675645342, 'cash', '2023-12-28 13:48:03', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -89,7 +94,15 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`id`, `CategoryName`, `ProductName`, `ProductPrice`, `LeftQuantity`, `TotalQuantity`, `PostingDate`, `UpdationDate`, `CategoryCode`) VALUES
 (11, 'Vegetables', 'Tomatoes', 140, 100.00, 1000.00, '2023-08-11 08:18:59', '2023-08-11 08:18:59', NULL),
-(24, 'Vegetables', 'Pototes ', 160, 0.00, 555.00, '2023-11-27 04:55:32', NULL, 'T100');
+(24, 'Vegetables', 'Potatoes ', 160, 500.00, 5555.00, '2023-12-23 07:49:36', '2023-12-23 07:49:36', 'T100'),
+(25, 'Vegetables', 'Cauliflower', 20, 2000.00, 2000.00, '2023-12-23 07:38:00', '2023-12-23 07:38:00', 'T100'),
+(26, 'Meat', 'Chicken', 360, 100.00, 400.00, '2023-12-25 01:37:04', '2023-12-25 01:37:04', 'M100'),
+(27, 'Meat', 'Goat', 15000, 12.00, 20.00, '2023-12-25 02:34:22', '2023-12-25 02:34:22', 'M100'),
+(28, 'Vegetables', 'Carrot', 50, 500.00, 2000.00, '2023-12-25 02:34:37', '2023-12-25 02:34:37', 'T100'),
+(29, 'Vegetables', 'Cucumber', 80, 0.00, 300.00, '2023-12-25 02:31:13', NULL, 'T100'),
+(30, 'Vegetables', 'Little Finger', 34, 0.00, 5000.00, '2023-12-25 02:32:43', NULL, 'T100'),
+(31, 'Friuts', 'Apple', 300, 200.00, 300.00, '2023-12-25 02:35:06', '2023-12-25 02:35:06', 'T100'),
+(32, 'Vegetables', 'test', 200, 0.00, 1000.00, '2023-12-25 03:48:43', NULL, 'T100');
 
 -- --------------------------------------------------------
 
@@ -114,7 +127,8 @@ CREATE TABLE `user_form` (
 --
 
 INSERT INTO `user_form` (`ID`, `Name`, `UserName`, `MobileNumber`, `Email`, `Password`, `Image`, `AdminRegdate`, `UpdationDate`) VALUES
-(4, 'Sudip Farm ', 'sudiplun', 9746271464, 'sudipfarm@bari.com', 'whatever', '_e.png', '2023-06-15 08:21:09', '2023-08-11 08:22:53');
+(4, 'Sudip Farm ', 'sudiplun', 9746271464, 'sudipfarm@bari.com', 'whatever', '_e.png', '2023-06-15 08:21:09', '2023-08-11 08:22:53'),
+(8, 'test', NULL, NULL, 'test@xyz.com', '1234', '', '2023-12-25 03:47:52', NULL);
 
 --
 -- Indexes for dumped tables
@@ -152,25 +166,25 @@ ALTER TABLE `user_form`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `user_form`
 --
 ALTER TABLE `user_form`
-  MODIFY `ID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

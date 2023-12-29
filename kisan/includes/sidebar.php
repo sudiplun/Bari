@@ -52,7 +52,7 @@
                      </a>
                  </li>
                  <li class="nav-item">
-                     <a class="nav-link" href="pending.php">
+                     <a class="nav-link" href="manage-pending.php">
                          <i class="ion ion-ios-list-box"></i>
                          <span class="nav-link-text">Pending</span>
                      </a>

@@ -4,7 +4,7 @@ include('includes/config.php');
 if (strlen($_SESSION['user_id'] == 0)) {
   header('location:logout.php');
 } else {
-  echo "Hello world..!";
+  echo "hello";
 }
 ?>
 <!DOCTYPE html>
@@ -63,39 +63,52 @@ if (strlen($_SESSION['user_id'] == 0)) {
                           <th>#</th>
                           <th>Customer Name</th>
                           <th>Customer Contact no.</th>
+                          <th>Product Name</th>
+                          <th>Quantity</th>
                           <th>Payment Mode</th>
-                          <th>Request Date</th>
                           <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php
                         $rno = mt_rand(10000, 99999);
-                        $query = mysqli_query($con, "select * from category");
+                        $query = mysqli_query($con, "SELECT orders.*, products.ProductName, products.TotalQuantity 
+                              FROM orders
+                              INNER JOIN products ON orders.ProductId = products.id");
                         $cnt = 1;
                         while ($row = mysqli_fetch_array($query)) {
                         ?>
                           <tr>
                             <td><?php echo $cnt; ?></td>
                             <td><?php echo $row['CustomerName']; ?></td>
-                            <td><?php echo $row['CustomerContact']; ?></td>
+                            <td><?php echo $row['CustomerContactNo']; ?></td>
+                            <td><?php echo $row['ProductName']; ?></td>
+                            <td><?php echo $row['Quantity']; ?></td>
                             <td><?php echo $row['PaymentMode']; ?></td>
-                            <td><?php echo $row['RequestDate']; ?></td>
                             <td>
-                              <a href="#" class="mr-2" data-toggle="tooltip" data-original-title="Approve">
-                                <i class="icon-check"></i>
-                              </a>
-                              </a>
-                              <a href="#" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Do you really want to reject?');">
-                                <i class="icon-trash txt-danger"></i>
-                              </a>
+                              <?php
+                              if ($row['ApprovalStatus'] == 'Pending') {
+                              ?>
+                                <a href="approve_order.php?order_id=<?php echo $row['id']; ?>" class="mr-2" data-toggle="tooltip" data-original-title="Approve">
+                                  <i class="icon-check"></i> Approve
+                                </a>
+                                <a href="reject_order.php?order_id=<?php echo $row['id']; ?>" class="mr-2" data-toggle="tooltip" data-original-title="Reject">
+                                  <i class="icon-close"></i> Reject
+                                </a>
+                              <?php
+                              } else {
+                                if ($row['ApprovalStatus'] == 'Approved') {
+                                  echo "Approved";
+                                } else {
+                                  echo "Reject";
+                                }
+                              }
+                              ?>
                             </td>
                           </tr>
                         <?php
                           $cnt++;
-                        }
-                        ?>
-
+                        } ?>
                       </tbody>
                     </table>
                   </div>

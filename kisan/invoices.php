@@ -81,7 +81,9 @@ if (strlen($_SESSION['user_id'] == 0)) {
                                                 <tbody>
                                                     <?php
                                                     $rno = mt_rand(10000, 99999);
-                                                    $query = mysqli_query($con, "select distinct InvoiceNumber,CustomerName,CustomerContactNo,PaymentMode,InvoiceGenDate  from orders");
+                                                    $query = mysqli_query($con, "SELECT distinct InvoiceNumber,CustomerName,CustomerContactNo,PaymentMode,InvoiceGenDate 
+                                    FROM orders 
+                                    WHERE ApprovalStatus NOT IN ('Pending', 'Rejected')");
                                                     $cnt = 1;
                                                     while ($row = mysqli_fetch_array($query)) {
                                                     ?>
