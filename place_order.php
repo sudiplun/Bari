@@ -15,7 +15,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Insert the order into the database with 'Pending' status
     $insert_query = "INSERT INTO orders (ProductId, Quantity, InvoiceNumber, CustomerName, CustomerContactNo, PaymentMode, ApprovalStatus)
                      VALUES ('$product_id', '$quantity', '$invoice_number', '$customer_name', '$customer_contact', '$payment_mode', 'Pending')";
-
+    // Check if the quantity is valid
+    if ($quantity > $product['LeftQuantity']) {
+        // Invalid quantity, show an error or redirect
+        echo '<script>alert("Invalid quantity. Please choose a quantity less than or equal to LeftQuantity")</script>';
+        echo "<script>window.history.back();</script>";
+        exit();
+    }
     if (mysqli_query($con, $insert_query)) {
         // Order placed successfully as 'Pending'
         echo '<script>alert("Order on Pending")</script>';

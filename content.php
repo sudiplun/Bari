@@ -26,6 +26,21 @@ if ($categoryFilter != 'All') {
 $result = mysqli_query($con, $query);
 $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
+<html>
+
+<head>
+    <script>
+        function validateQuantity() {
+            var quantityInput = document.getElementById('quantity');
+            var leftQuantity = <?php echo $product['LeftQuantity']; ?>;
+
+            if (parseInt(quantityInput.value) > leftQuantity) {
+                alert('Quantity cannot be greater than the available quantity (' + leftQuantity + ')');
+                quantityInput.value = leftQuantity; // Set quantity to the available quantity
+            }
+        }
+    </script>
+</head>
 <div class="container">
     <h1 class="my-4">Product List</h1>
     <!-- Search Form -->
@@ -87,7 +102,7 @@ $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
                                 </div>
                                 <div class="form-group">
                                     <label for="quantity">Quantity</label>
-                                    <input type="number" class="form-control" id="quantity" name="quantity" required>
+                                    <input type="number" class="form-control" id="quantity" name="quantity" required oninput="validateQuantity()">
                                 </div>
                                 <div class="form-group">
                                     <label for="paymentMode">Payment Mode</label>
@@ -105,4 +120,8 @@ $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
             <!-- /Order Modal -->
         <?php endforeach; ?>
     </div>
+</div>
+
+</html>
+</div>
 </div>
